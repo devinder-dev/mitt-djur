@@ -1,0 +1,74 @@
+image: oven/bun:latest
+
+stages:
+  - test
+  - build
+  - deploy
+
+# ── Type-check backend ────────────────────────────────────────────────────────
+test_job:
+  stage: test
+  script:
+    - cd backend
+    - bun install
+    - bunx tsc --noEmit
+  only:
+    - merge_requests
+    - develop
+    - main
+
+# ── Build + push backend Docker image ─────────────────────────────────────────
+build_job_backend:
+  image: docker:24
+  stage: build
+  services:
+    - docker:dind                  # required for docker commands inside a job
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - cd backend
+    - |
+      docker buildx build \
+        -t $CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHORT_SHA \
+        -t $CI_REGISTRY_IMAGE/backend:$CI_COMMIT_REF_SLUG \
+        -t $CI_REGISTRY_IMAGE/backend:latest \
+        --push .
+  only:
+    - develop
+    - main
+
+# ── Build + push frontend Docker image ────────────────────────────────────────
+build_job_frontend:
+  image: docker:24
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - cd frontend
+    - |
+      docker buildx build \
+        -t $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHORT_SHA \
+        -t $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_REF_SLUG \
+        -t $CI_REGISTRY_IMAGE/frontend:latest \
+        --push .
+  only:
+    - develop
+    - main
+
+# ── Deploy to Portainer (runs only on main) ───────────────────────────────────
+# Requires PORTAINER_PASSWORD set as a masked CI/CD variable in GitLab.
+deploy_job:
+  stage: deploy
+  image: curlimages/curl:latest
+  script:
+    - |
+      set -e
+      PORTAINER_API_URL="https://portainer.doe25.swarm.chas-lab.dev/api"
+      PORTAINER_TOKEN=$(curl -s -X POST "${PORTAINER_API_URL}/auth" \
+        --json "{\"Username\": \"AnLa\", \"Password\": \"${PORTAINER_PASSWORD}\"}" \
+        | jq -r '.jwt')
+      echo "Deploy token acquired: ${#PORTAINER_TOKEN} chars"
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH

@@ -1,0 +1,21 @@
+FROM oven/bun:1-alpine AS deps
+WORKDIR /app
+
+# Install dependencies only — separate layer so it caches between code changes
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
+
+# ── Production image ──────────────────────────────────────────────────────────
+FROM oven/bun:1-alpine
+WORKDIR /app
+
+# Copy deps and source
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+ENV NODE_ENV=production
+
+EXPOSE 3000
+
+# Bun runs TypeScript natively — no compile step needed
+CMD ["bun", "run", "src/server.ts"]

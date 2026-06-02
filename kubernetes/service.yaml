@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: petstep
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80          # other things in the cluster reach the API on port 80
+      targetPort: 3000  # forwarded to the container's port 3000
+  type: ClusterIP

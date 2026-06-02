@@ -1,0 +1,23 @@
+// controllers/activity/addGratitudeController.ts
+// Handles POST /api/activity/gratitude
+// Job: validate body → call service → send result
+
+import type { FastifyRequest, FastifyReply } from 'fastify';
+import { validate } from '../../utils/validate.ts';
+import { addGratitudeSchema } from '../../schemas/activitySchemas.ts';
+import * as activityService from '../../services/activityService.ts';
+
+export const addGratitudeController = async (request: FastifyRequest, reply: FastifyReply) => {
+
+  // Step 1: Validate the request body
+  const body = validate(addGratitudeSchema, request.body);
+
+  // Step 2: Call the service — add gratitude entry and award XP
+  const result = await activityService.addGratitude(request.server.db, request.userId, body);
+
+  // Step 3: Send the result back
+  return reply.status(200).send({
+    success: true,
+    data: result,
+  });
+};

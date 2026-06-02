@@ -1,0 +1,43 @@
+# Routes outside traffic into the cluster.
+# REQUIRES an ingress controller in your cluster (e.g. ingress-nginx). Check with:
+#   kubectl get pods -A | grep ingress
+# If you don't have one, install ingress-nginx first, or expose the frontend
+# Service as type: NodePort / LoadBalancer instead.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: petstep
+  namespace: petstep
+  annotations:
+    # No rewrite-target — backend receives the full /api/... path as-is.
+    # Adding rewrite-target: / would strip the path and break all API calls.
+spec:
+  ingressClassName: nginx        # change if your controller uses another class
+  rules:
+    - host: petstep.local        # change to your real domain (and your DNS/hosts)
+      http:
+        paths:
+          # API requests go to the backend
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 80
+          # Backend health check (optional, handy for debugging)
+          - path: /health
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 80
+          # Everything else goes to the frontend
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80

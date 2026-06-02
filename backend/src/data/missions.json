@@ -1,0 +1,61 @@
+[
+  { "id": "m001", "title": "Go for a 15 minute walk", "category": "be_active", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m002", "title": "Take the stairs instead of the elevator", "category": "be_active", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m003", "title": "Walk 5000 steps today", "category": "be_active", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m004", "title": "Walk 10000 steps today", "category": "be_active", "difficulty": "hard", "xp": 50, "coins": 30 },
+  { "id": "m005", "title": "Stand up and move for 5 minutes every hour", "category": "be_active", "difficulty": "easy", "xp": 20, "coins": 10 },
+
+  { "id": "m006", "title": "Go smoke-free for today", "category": "quit_smoking", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m007", "title": "Delay your first cigarette by 1 hour", "category": "quit_smoking", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m008", "title": "Replace a smoke break with a short walk", "category": "quit_smoking", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m009", "title": "Go smoke-free for 3 days in a row", "category": "quit_smoking", "difficulty": "hard", "xp": 50, "coins": 30 },
+  { "id": "m010", "title": "Track how many cigarettes you smoke today", "category": "quit_smoking", "difficulty": "easy", "xp": 20, "coins": 10 },
+
+  { "id": "m011", "title": "Go snus-free for today", "category": "quit_snus", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m012", "title": "Delay your first snus by 1 hour", "category": "quit_snus", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m013", "title": "Replace a snus craving with a glass of water", "category": "quit_snus", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m014", "title": "Go snus-free for 3 days in a row", "category": "quit_snus", "difficulty": "hard", "xp": 50, "coins": 30 },
+  { "id": "m015", "title": "Track how many snus you use today", "category": "quit_snus", "difficulty": "easy", "xp": 20, "coins": 10 },
+
+  { "id": "m016", "title": "Drink 1 glass of water when you wake up", "category": "drink_water", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m017", "title": "Drink 6 glasses of water today", "category": "drink_water", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m018", "title": "Drink 8 glasses of water today", "category": "drink_water", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m019", "title": "Replace one soda with water today", "category": "drink_water", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m020", "title": "Carry a water bottle with you all day", "category": "drink_water", "difficulty": "easy", "xp": 20, "coins": 10 },
+
+  { "id": "m021", "title": "Meditate for 5 minutes", "category": "meditate", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m022", "title": "Meditate for 10 minutes", "category": "meditate", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m023", "title": "Meditate for 20 minutes", "category": "meditate", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m024", "title": "Do a breathing exercise before bed", "category": "meditate", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m025", "title": "Try a guided meditation session", "category": "meditate", "difficulty": "easy", "xp": 20, "coins": 10 },
+
+  { "id": "m026", "title": "Read for 10 minutes today", "category": "read_more", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m027", "title": "Read for 20 minutes today", "category": "read_more", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m028", "title": "Read for 30 minutes today", "category": "read_more", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m029", "title": "Read one full chapter of a book", "category": "read_more", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m030", "title": "Read before bed instead of using your phone", "category": "read_more", "difficulty": "easy", "xp": 20, "coins": 10 },
+
+  { "id": "m031", "title": "Go to bed before midnight", "category": "sleep_better", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m032", "title": "No phone 30 minutes before bed", "category": "sleep_better", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m033", "title": "Sleep at least 7 hours tonight", "category": "sleep_better", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m034", "title": "Set a consistent wake-up time and stick to it", "category": "sleep_better", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m035", "title": "No caffeine after 3pm today", "category": "sleep_better", "difficulty": "easy", "xp": 20, "coins": 10 },
+
+  { "id": "m036", "title": "Do 10 push-ups", "category": "workout", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m037", "title": "Do a 20 minute home workout", "category": "workout", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m038", "title": "Go to the gym today", "category": "workout", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m039", "title": "Do 20 minutes of stretching", "category": "workout", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m040", "title": "Complete a 5k run", "category": "workout", "difficulty": "hard", "xp": 50, "coins": 30 },
+
+  { "id": "m041", "title": "Eat a piece of fruit today", "category": "eat_healthy", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m042", "title": "Cook a healthy meal at home", "category": "eat_healthy", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m043", "title": "Skip junk food for the whole day", "category": "eat_healthy", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m044", "title": "Eat vegetables with every meal today", "category": "eat_healthy", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m045", "title": "Skip sugar for the whole day", "category": "eat_healthy", "difficulty": "hard", "xp": 50, "coins": 30 },
+
+  { "id": "m046", "title": "Write a to-do list for today", "category": "be_productive", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m047", "title": "Complete your most important task first", "category": "be_productive", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m048", "title": "Work focused for 25 minutes without distractions", "category": "be_productive", "difficulty": "easy", "xp": 20, "coins": 10 },
+  { "id": "m049", "title": "Spend 30 minutes on a personal project", "category": "be_productive", "difficulty": "medium", "xp": 30, "coins": 20 },
+  { "id": "m050", "title": "Clean and organize your workspace", "category": "be_productive", "difficulty": "easy", "xp": 20, "coins": 10 }
+]

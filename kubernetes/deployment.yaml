@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: petstep
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      # Needed only if your GitLab container registry is private.
+      # Create the secret first (see README), then this lets the cluster pull.
+      imagePullSecrets:
+        - name: gitlab-registry
+      containers:
+        - name: backend
+          # REPLACE with your real image. From .gitlab-ci.yml it is published as
+          # $CI_REGISTRY_IMAGE/backend:<tag>, e.g.
+          # registry.gitlab.com/<group>/grupp-17/backend:main
+          image: git.chas-lab.dev/chas-challenge-2026/grupp-17/backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000     # the app listens on PORT=3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: PORT
+              value: "3000"
+            - name: HOST
+              value: "0.0.0.0"
+          envFrom:
+            - secretRef:
+                name: backend-secrets  # MONGODB_URI, JWT secrets, FRONTEND_URL
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          # The app exposes GET /health (see server.ts)
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 20
+            periodSeconds: 20

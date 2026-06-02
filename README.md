@@ -4,6 +4,8 @@
 
 This is a school group project built at **Chas Academy (2025–2026)** by a team of 8. **I (Devinder Singh) was the sole backend developer** — I designed and built the entire REST API from scratch using Bun + Fastify + TypeScript, covering all 30+ endpoints, JWT authentication, cron jobs, security hardening, Dockerfiles, and CI/CD pipeline fixes. The rest of the team worked on frontend UI, design (Figma), and DevOps.
 
+> **📌 Note:** The original project was developed on **Chas Academy's private GitLab server** (`git.chas-lab.dev`), which is only accessible to students and staff. I created this public GitHub copy so that anyone interested — recruiters, collaborators, or curious developers — can browse the full source code freely. Secrets and credentials have been replaced with placeholders.
+
 ---
 
 ## 🗺 What I Built (Devinder Singh — Backend Lead)
